@@ -150,3 +150,15 @@ Time: 1.447s (1 second), executed in: 1.442s (1 second)
 ---
 
 # Question 7
+
+- Terraform Workflow
+
+- Answer: 
+
+```bash
+terraform init
+terraform apply -auto-approve
+terraform destroy
+```
+
+![alt text](images/destroy.png)
