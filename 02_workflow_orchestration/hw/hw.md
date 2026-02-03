@@ -35,3 +35,74 @@ WHERE EXTRACT(YEAR FROM tpep_pickup_datetime) = 2020
 | 24648663 |
 +----------+
 ```
+
+# Question 4
+
+- How many rows are there for the Green Taxi data for all CSV files in the year 2020?
+
+- Answer: 1734039
+
+```bash
+maxkaizo@max:~$ bq query --use_legacy_sql=false '
+> SELECT COUNT(*)
+FROM `dataeng-448500.dez26hw02.green_tripdata`
+WHERE EXTRACT(YEAR FROM lpep_pickup_datetime) = 2020
+> '
++---------+
+|   f0_   |
++---------+
+| 1734039 |
++---------+
+```
+
+# Question 5
+
+- How many rows are there for the Yellow Taxi data for the March 2021 CSV file?
+
+- Answer: 1925130
+
+```bash
+maxkaizo@max:~$ bq query --use_legacy_sql=false '
+> SELECT COUNT(*)
+FROM `dataeng-448500.dez26hw02.yellow_tripdata`
+WHERE EXTRACT(YEAR FROM tpep_pickup_datetime) = 2021
+AND EXTRACT(MONTH FROM tpep_pickup_datetime) = 3
+> '
++---------+
+|   f0_   |
++---------+
+| 1925130 |
++---------+
+```
+
+# Question 6
+
+- How would you configure the timezone to New York in a Schedule trigger? 
+
+- Answer: Add a timezone property set to America/New_York in the Schedule trigger configuration
+
+According to the Kestra documentation:
+
+---
+To set up the time zone for triggers in Kestra, you can use the timezone property within the trigger definition. This property allows you to specify a time zone identifier for evaluating cron expressions.
+
+How to set the timezone property:
+
+Locate the Trigger Definition: In your flow's YAML, find the triggers section and the specific trigger you want to configure (e.g., io.kestra.plugin.core.trigger.Schedule or io.kestra.plugin.core.trigger.ScheduleOnDates).
+Add timezone Property: Add the timezone property to the trigger, using a time zone identifier (e.g., America/New_York).
+Example for a Schedule trigger:
+
+```yaml
+triggers:
+  - id: daily
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "@daily"
+    timezone: America/New_York
+```
+
+Key Points:
+
+Default Time Zone: Schedules default to UTC if no timezone is explicitly set.
+Time Zone Identifier: Use standard time zone identifiers (like those found in the tz database, e.g., America/New_York, Europe/Paris, Asia/Tokyo).
+Server and Database Alignment: It's recommended to keep your Kestra server and database time zones aligned to avoid unexpected differences.
+---
