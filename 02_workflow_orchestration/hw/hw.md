@@ -16,6 +16,8 @@ maxkaizo@max:~/tmp$ ls -lash yellow_tripdata_2020-12.csv
 
 - Answer: green_tripdata_2020-04.csv
 
+![alt text](image.png)
+
 # Question 3
 
 - How many rows are there for the Yellow Taxi data for all CSV files in the year 2020?
