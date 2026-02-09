@@ -44,3 +44,24 @@ select count(1) from `dataeng-448500.dez26_hw_03.external_yellow_tripdata`;
  ![alt text](image-4.png)
 
  ![alt text](image-5.png)
+
+
+ # Question 4
+
+- How many records have a fare amount of 0?
+
+- Answer: 8,333
+
+``` sql
+ maxkaizo@max:~/dez26$ bq query --use_legacy_sql=false '
+select count(1) from`dataeng-448500.dez26_hw_03.yellow_tripdata_non_partitioned` where fare_amount = 0;
+'
++------+
+| f0_  |
++------+
+| 8333 |
++------+
+```
+# Question 5
+
+
