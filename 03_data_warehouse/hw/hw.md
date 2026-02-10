@@ -85,5 +85,13 @@ SELECT * FROM `dataeng-448500.dez26_hw_03.external_yellow_tripdata`;
 
 ![alt text](image-8.png)
 
+# Question 7
+
+- Where is the data stored in the External Table you created? 
+
+- Answer: GCP Bucket
+
+![alt text](image-9.png)
+
 
 
